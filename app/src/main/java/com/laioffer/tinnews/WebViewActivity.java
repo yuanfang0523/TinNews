@@ -21,7 +21,12 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class WebViewActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+import com.laioffer.tinnews.common.TinBasicActivity;
+
+
+public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMenuItemClickListener {
+
+
     public static final String URL = "url";
     private String url = null ;
     private ProgressBar progressBar;
@@ -30,7 +35,6 @@ public class WebViewActivity extends AppCompatActivity implements PopupMenu.OnMe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,5 +111,16 @@ public class WebViewActivity extends AppCompatActivity implements PopupMenu.OnMe
         }
         return true;
     }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_web_view;
+    }
+
+    @Override
+    public void showSnackBar(String message) {
+
+    }
+
 
 }

@@ -14,13 +14,6 @@ public class MainActivity extends TinBasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //add click listener here
-        findViewById(R.id.text_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 

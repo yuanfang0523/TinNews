@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.laioffer.tinnews.common.TinBasicActivity;
+import com.laioffer.tinnews.common.TinBasicFragment;
 
 
 public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMenuItemClickListener {
@@ -115,6 +116,11 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
     @Override
     protected int getLayout() {
         return R.layout.activity_web_view;
+    }
+
+    @Override
+    public void doFragmentTransaction(TinBasicFragment basicFragment) {
+
     }
 
     @Override

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.laioffer.tinnews.R;
 import com.laioffer.tinnews.save.SavedNewsFragment;
+import com.laioffer.tinnews.save.detail.SavedNewsDetailedFragment;
+import com.laioffer.tinnews.tin.TinGalleryFragment;
 
 public class ContainerFragment extends TinBasicFragment {
     //define containerFragment index and tag
@@ -51,7 +53,7 @@ public class ContainerFragment extends TinBasicFragment {
     private static Fragment createInitFragmentByIndex(int pageIndex) {
         switch (pageIndex) {
             case HOME_PAGE:
-                return null;
+                return TinGalleryFragment.newInstance();
             case SAVE_PAGE:
                 return SavedNewsFragment.newInstance();
             case PROFILE_PAGE:
@@ -82,7 +84,5 @@ public class ContainerFragment extends TinBasicFragment {
                 return null;
         }
     }
-
-
 
 }

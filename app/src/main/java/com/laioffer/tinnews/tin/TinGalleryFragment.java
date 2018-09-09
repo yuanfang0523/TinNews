@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.laioffer.tinnews.R;
 import com.laioffer.tinnews.common.TinBasicFragment;
+import com.laioffer.tinnews.mvp.MvpFragment;
 import com.laioffer.tinnews.retrofit.NewsRequestApi;
 import com.laioffer.tinnews.retrofit.RetrofitClient;
 import com.laioffer.tinnews.retrofit.response.News;
@@ -25,10 +26,9 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TinGalleryFragment extends TinBasicFragment implements TinNewsCard.OnSwipeListener {
-
+public class TinGalleryFragment extends MvpFragment<TinContract.Presenter> implements TinNewsCard.OnSwipeListener, TinContract.View {
+    //SwipePlaceHolderView
     private SwipePlaceHolderView mSwipeView;
-
     public static TinGalleryFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -67,13 +67,18 @@ public class TinGalleryFragment extends TinBasicFragment implements TinNewsCard.
                 mSwipeView.doSwipe(true);
             }
         });
-        getDate();
+
+        //fake date
+        //replace from here
+        //getDate();
+        //end here
+
         return view;
     }
 
+    //below onCreateView
 
-
-    private void getDate() {
+    /*private void getDate() {
         RetrofitClient.getInstance().create(NewsRequestApi.class).getNewsByCountry("us")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -81,19 +86,25 @@ public class TinGalleryFragment extends TinBasicFragment implements TinNewsCard.
                 .subscribe(baseResponse -> {
                     showNewsCard(baseResponse.articles);
                 });
-    }
+    }*/
 
-    private void showNewsCard(List<News> newsList) {
+    @Override
+    public void showNewsCard(List<News> newsList) {
         for (News news : newsList) {
             TinNewsCard tinNewsCard = new TinNewsCard(news, mSwipeView, this);
             mSwipeView.addView(tinNewsCard);
         }
     }
 
-
-
     @Override
     public void onLike(News news) {
+        presenter.saveFavoriteNews(news);
+    }
 
+
+    //make sure you have implement it
+    @Override
+    public TinContract.Presenter getPresenter() {
+        return new TinPresenter();
     }
 }

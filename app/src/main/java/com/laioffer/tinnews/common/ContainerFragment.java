@@ -21,20 +21,40 @@ public class ContainerFragment extends TinBasicFragment {
     public static final int PROFILE_PAGE = 2;
     public static final String PROFILE_PAGE_TAG = "profile_page";
     private int pageIndex;
+    //add initiFragment field
     private Fragment initFragment;
-
 
     public static ContainerFragment newInstance(int pageIndex) {
         ContainerFragment containerFragment = new ContainerFragment();
         containerFragment.pageIndex = pageIndex;
-        containerFragment.initFragment = createInitFragmentByIndex(pageIndex);
+        //pass the value
+        containerFragment.initFragment = createInitFragmentByIndex
+                (pageIndex);
         return containerFragment;
     }
 
+    private static Fragment createInitFragmentByIndex(int pageIndex) {
+        switch (pageIndex) {
+            //replace the null with TinGalleryFragment
+            case HOME_PAGE:
+                return TinGalleryFragment.newInstance();
+            case SAVE_PAGE:
+                return SavedNewsFragment.newInstance();
+            case PROFILE_PAGE:
+                return null;
+            default:
+                throw new IndexOutOfBoundsException();
+        }
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //replace old layout with child_fragment_container
         return inflater.inflate(R.layout.child_fragment_container, container, false);
     }
+
 
     //add position index
     public static int getPositionById(int id) {
@@ -45,19 +65,6 @@ public class ContainerFragment extends TinBasicFragment {
                 return SAVE_PAGE;
             case R.id.action_profile:
                 return PROFILE_PAGE;
-            default:
-                throw new IndexOutOfBoundsException();
-        }
-    }
-
-    private static Fragment createInitFragmentByIndex(int pageIndex) {
-        switch (pageIndex) {
-            case HOME_PAGE:
-                return TinGalleryFragment.newInstance();
-            case SAVE_PAGE:
-                return SavedNewsFragment.newInstance();
-            case PROFILE_PAGE:
-                return null;
             default:
                 throw new IndexOutOfBoundsException();
         }
@@ -84,5 +91,7 @@ public class ContainerFragment extends TinBasicFragment {
                 return null;
         }
     }
+
+
 
 }

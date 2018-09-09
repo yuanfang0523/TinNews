@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.laioffer.tinnews.common.ContainerFragment;
 import com.laioffer.tinnews.common.TinBasicActivity;
@@ -20,7 +21,6 @@ public class MainActivity extends TinBasicActivity {
     private ViewPager viewPager;
     private BottomNavigationView bottomBar;
     private TinFragmentPagerAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class MainActivity extends TinBasicActivity {
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(TinFragmentPagerAdapter.FRAGMENT_NUMBER);
 
-        //add bottombar code from here
+        //add bottombar code
         bottomBar = findViewById(R.id.bottom_navigation);
         bottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -41,7 +41,7 @@ public class MainActivity extends TinBasicActivity {
                 return true;
             }
         });
-        //add bottombar code end  here
+
     }
 
 
@@ -49,16 +49,6 @@ public class MainActivity extends TinBasicActivity {
     protected int getLayout() {
         return R.layout.activity_main;
     }
-
-    @Override
-    public void doFragmentTransaction(TinBasicFragment basicFragment) {
-        FragmentTransaction fragmentTransaction = getCurrentChildFragmentManager().beginTransaction();
-        fragmentTransaction.replace(
-                R.id.child_fragment_container,
-                basicFragment,
-                basicFragment.getFragmentTag()).addToBackStack(null).commit();
-    }
-
 
     @Override
     public void showSnackBar(String message) {
@@ -70,6 +60,15 @@ public class MainActivity extends TinBasicActivity {
     }
 
     @Override
+    public void doFragmentTransaction(TinBasicFragment basicFragment) {
+        FragmentTransaction fragmentTransaction = getCurrentChildFragmentManager().beginTransaction();
+        fragmentTransaction.replace(
+                R.id.child_fragment_container,
+                basicFragment,
+                basicFragment.getFragmentTag()).addToBackStack(null).commit();
+    }
+
+    @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getCurrentChildFragmentManager();
         if (fragmentManager.getBackStackEntryCount() > 0) {
@@ -78,5 +77,6 @@ public class MainActivity extends TinBasicActivity {
             super.onBackPressed();
         }
     }
+
 
 }

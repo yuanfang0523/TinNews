@@ -2,6 +2,8 @@ package com.laioffer.tinnews;
 
 
 
+
+
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -24,10 +26,7 @@ import android.widget.Toast;
 import com.laioffer.tinnews.common.TinBasicActivity;
 import com.laioffer.tinnews.common.TinBasicFragment;
 
-
 public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMenuItemClickListener {
-
-
     public static final String URL = "url";
     private String url = null ;
     private ProgressBar progressBar;
@@ -80,6 +79,12 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
         });
     }
 
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_web_view;
+    }
+
+
     @SuppressLint("RestrictedApi")
     private void showMenu(View view) {
         PopupMenu menu = new PopupMenu(this, view);
@@ -114,11 +119,6 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
     }
 
     @Override
-    protected int getLayout() {
-        return R.layout.activity_web_view;
-    }
-
-    @Override
     public void doFragmentTransaction(TinBasicFragment basicFragment) {
 
     }
@@ -127,6 +127,4 @@ public class WebViewActivity extends TinBasicActivity implements PopupMenu.OnMen
     public void showSnackBar(String message) {
 
     }
-
-
 }

@@ -28,3 +28,4 @@ public class TinFragmentPagerAdapter extends FragmentPagerAdapter {
         return FRAGMENT_NUMBER;
     }
 }
+

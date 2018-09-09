@@ -18,10 +18,11 @@ import com.laioffer.tinnews.save.detail.SavedNewsDetailedFragment;
 public class SavedNewsFragment extends TinBasicFragment {
 
 
-    public static SavedNewsFragment newInstance(){
+    public static SavedNewsFragment newInstance() {
         SavedNewsFragment fragment = new SavedNewsFragment();
         return fragment;
     }
+
 
 
     @Override
@@ -38,5 +39,6 @@ public class SavedNewsFragment extends TinBasicFragment {
         });
         return view;
     }
+
 
 }

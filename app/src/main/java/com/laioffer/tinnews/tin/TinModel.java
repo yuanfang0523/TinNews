@@ -50,7 +50,7 @@ public class TinModel implements TinContract.Model {
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
 
         }, error -> {
-
+                    presenter.onError();
         });
     }
 }

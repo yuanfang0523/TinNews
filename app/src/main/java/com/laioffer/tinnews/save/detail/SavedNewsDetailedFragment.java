@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.laioffer.tinnews.R;
-import com.laioffer.tinnews.common.AuthorViewModel;
 import com.laioffer.tinnews.common.BaseViewModel;
 import com.laioffer.tinnews.common.TinBasicFragment;
 import com.laioffer.tinnews.common.Util;
@@ -27,14 +26,15 @@ public class SavedNewsDetailedFragment extends TinBasicFragment {
 
     private static final String NEWS = "news";
     private ViewModelAdapter viewModelAdapter;
-
     public static SavedNewsDetailedFragment newInstance(News news) {
+
         Bundle args = new Bundle();
         args.putParcelable(NEWS, news);
         SavedNewsDetailedFragment fragment = new SavedNewsDetailedFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
 
     public static SavedNewsDetailedFragment newInstance() {
 

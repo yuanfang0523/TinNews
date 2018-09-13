@@ -40,8 +40,9 @@ public class SavedNewsAdapter extends RecyclerView.Adapter<SavedNewsAdapter.Save
         holder.description.setText(news.getDescription());
         holder.icon.setImageResource(getDrawble());
         holder.itemView.setOnClickListener(v -> {
-            fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance());
+            fragmentManager.doFragmentTransaction(SavedNewsDetailedFragment.newInstance(news));
         });
+
     }
 
     private @DrawableRes

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.laioffer.tinnews.R;
-import com.laioffer.tinnews.common.SavedNewsViewModel;
 import com.laioffer.tinnews.common.TinBasicFragment;
 import com.laioffer.tinnews.common.ViewModelAdapter;
 import com.laioffer.tinnews.mvp.MvpFragment;
@@ -72,12 +71,14 @@ public class SavedNewsFragment extends MvpFragment<SavedNewsContract.Presenter> 
             emptyState.setVisibility(View.GONE);
         }
         if (newsList != null) {
-           List<SavedNewsViewModel> models = new LinkedList<>();
-           for (News news : newsList) {
-               models.add(new SavedNewsViewModel(news, tinFragmentManager));
-           }
-           savedNewsAdapter.addViewModels(models);
+            List<SavedNewsViewModel> models = new LinkedList<>();
+            for (News news : newsList) {
+                models.add(new SavedNewsViewModel(news, tinFragmentManager));
+            }
+            savedNewsAdapter.addViewModels(models);
         }
     }
+
+
 
 }
